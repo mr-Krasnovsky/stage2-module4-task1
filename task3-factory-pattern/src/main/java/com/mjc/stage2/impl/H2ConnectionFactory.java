@@ -15,7 +15,7 @@ public class H2ConnectionFactory  implements ConnectionFactory {
         Connection connection = null;
         try {
             Properties properties = new Properties();
-            properties.load(H2ConnectionFactory.class.getClassLoader().getResourceAsStream("app.properties"));
+            properties.load(H2ConnectionFactory.class.getClassLoader().getResourceAsStream("h2database.properties"));
 
             String url = properties.getProperty("db_url");
             String user = properties.getProperty("user");
