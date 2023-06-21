@@ -13,8 +13,6 @@ public class Employee {
     private String email;
     private String carNumber;
 
-    public Employee() {
-    }
 
     public String getName() {
         return name;
@@ -111,4 +109,5 @@ public class Employee {
         }
     }
 }
+
 
