@@ -11,14 +11,20 @@ import java.util.Properties;
 
 public class H2ConnectionFactory  implements ConnectionFactory {
     @Override
-    public Connection createConnection() throws IOException, SQLException {
-        Properties properties = new Properties();
-        properties.load(H2ConnectionFactory.class.getClassLoader().getResourceAsStream("app.properties"));
+    public Connection createConnection() {
+        Connection connection = null;
+        try {
+            Properties properties = new Properties();
+            properties.load(H2ConnectionFactory.class.getClassLoader().getResourceAsStream("app.properties"));
 
-        String url = properties.getProperty("db_url");
-        String user = properties.getProperty("user");
-        String password = properties.getProperty("password");
-        return DriverManager.getConnection(url, user, password);
+            String url = properties.getProperty("db_url");
+            String user = properties.getProperty("user");
+            String password = properties.getProperty("password");
+            connection = DriverManager.getConnection(url, user, password);
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
 }
 
